@@ -5,7 +5,7 @@ const crypto=require('crypto');
 const app=express(),server=http.createServer(app),io=new Server(server,{cors:{origin:'*'}});
 app.use(express.static('public'));
 app.get('/health',(_,res)=>res.json({ok:true,game:'brainwave-online'}));
-const PORT=process.env.PORT||3000,rooms=new Map();
+const rooms=new Map();
 const praise=['你们的脑电波已经偷偷连上线了！','这不是巧合，这是默契在发光。','你们仨的想象力像是共用了一颗超灵大脑。','恭喜解锁隐藏成就：心有灵犀一点通！','你们把随机联想玩成了艺术。','这份默契，建议申请专利。','语言有边界，你们的脑洞没有。','今日最佳队友：你们三位，毫无悬念。','你们之间一定有一条看不见的灵感 Wi-Fi。'];
 const norm=s=>String(s||'').trim().toLowerCase().replace(/[\s\p{P}\p{S}]+/gu,'');
 const groups=[['猫','cat','kitty','小猫'],['狗','dog','puppy','小狗'],['开心','快乐','高兴','happy','joyful','glad'],['悲伤','难过','伤心','sad','unhappy'],['汽车','轿车','car','auto'],['手机','电话','mobilephone','cellphone'],['海','大海','海洋','ocean','sea'],['树','tree'],['花','flower','blossom'],['火','fire'],['水','water'],['太阳','sun'],['月亮','moon'],['朋友','friend'],['爱','love'],['家','home','house'],['快速','快','迅速','fast','quick','rapid'],['漂亮','美丽','好看','beautiful','pretty'],['聪明','机灵','smart','clever'],['食物','食品','food'],['音乐','music'],['书','书籍','book'],['冷','寒冷','cold'],['热','炎热','hot'],['小','微小','small','little'],['大','巨大','big','large']];
